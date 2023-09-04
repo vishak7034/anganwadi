@@ -1,0 +1,121 @@
+{% extends 'districtofficer/district_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+    alter({{ message }})
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>Food stock request List-Pending</h2>
+
+              <div id="search-section">
+{#              	<form id="suggestion_form" name="gs" method="get" action="#">#}
+{#                <div class="searchText">#}
+{#                  #}
+{#                  <input type="text" name="q" class="searchText" placeholder="Enter your domain here..." autocomplete="on">#}
+{#                  <ul>#}
+{#                    <li><label><input type="checkbox" name="ext_com" value="1"><span>.com <em>($10/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_net" value="1"><span>.net <em>($12/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_org" value="1"><span>.org <em>($8/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_in" value="1"><span>.in <em>($6/yr)</em></span></label></li>#}
+{#                  </ul>#}
+{#                </div>#}
+{#                    <input type="submit" name="results" class="main-button" value="Search Now">#}
+{#                 </form>#}
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>Food stock request List-Pending</h3>
+            </div>
+          </div>
+           <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+                                 <th class="success" style="color: white;">Food</th>
+                                 <th class="success" style="color: white;">Quantity</th>
+                                 <th class="success" style="color: white;">Anganwadi</th>
+                                 <th class="success" style="color: white;">Request Date</th>
+                                 <th class="success" style="color: white;">Status</th>
+                                 <th class="success" style="color: white;">Action</th>
+
+                                    {% for i in foodstockrequest %}
+
+                                <tr style="background-color:white;width: 700px;">
+                                    <td>{{ i.food_id.pfood_name}}</td>
+                                    <td>{{ i.pquantity}}</td>
+                                    <td>{{ i.user.a_name }}</td>
+                                    <td>{{ i.fsrequest_date }}</td>
+                                    <td>{{ i.f_status  }}</td>
+
+
+
+
+                                    <td><button style="background-color:lightslategray"><a href="pregnant_request_accept?id={{ i.id }}" class=" btn btn-success" style="color:black">Approve</a></button></td>
+{#                                    <td><button style="background-color:lightslategray"><a href="rejects?id={{ us.Userr_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>#}
+
+                                </tr>
+                                        {% endfor %}
+
+
+
+                            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+    <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+
+
+{% endblock %}

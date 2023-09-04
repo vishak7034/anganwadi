@@ -1,0 +1,216 @@
+{% extends 'anganwadi/anganwadi_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+     alter("{{ message }}")
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>User Food Services</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>User Food Services</h3>
+               <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+{#              <h3 class="page-title">ADD DISTRICT</h3>#}
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+                     <form action="user_foodServices" method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+
+                        <li>
+                         <label for="exampleInputUsername1">Food Type</label>
+                        <a href="#" style="background-color:lightslategray" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>Foodtype:-{{ typefood.foodtype }}</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            {% for i in Foodtype %}
+                            <li><i class="mdi mdi-speedometer"></i><a href="typeof_food?food_id={{ i.id }}">{{ i.foodtype }} </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+                        </li>
+                      <br>
+                        <li>
+                         <label for="exampleInputUsername1">Food list</label>
+                      <select style="background-color:lightslategray" class="form-control"  name="food" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+                              <option  required="required">---Select---</option>
+                                          {% for j in userfood %}
+                                          <option value="{{ j.id }}">{{ j.food_name }}</option>
+                                            {% endfor %}
+                               </select>
+
+                      </div>
+
+{#                        <a href="#" style="background-color:lightslategray" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>Food:-{{ food_name }}</a>#}
+{#                        <ul class="sub-menu children dropdown-menu">#}
+{#                            {% for j in userfood %}#}
+{#                                <option value="">FEBRUARY</option>#}
+{#                            <li><i class="mdi mdi-speedometer"></i><a href="selected_place?place_id={{ j.id }}"> </a></li>#}
+{#                            {% endfor %}#}
+{##}
+{#                        </ul>#}
+                       </li>
+                      <br>
+
+                         <label for="exampleInputUsername1">Month</label>
+                      <select style="background-color:lightslategray" class="form-control"  name="month" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+                              <option  required="required">---Select---</option>
+                                          <option value="JANUARY">JANUARY</option>
+                                          <option value="FEBRUARY">FEBRUARY</option>
+                                          <option value="MARCH">MARCH</option>
+                                          <option value="APRIL">APRIL</option>
+                                          <option value="MAY">MAY</option>
+                                          <option value="JUNE">JUNE</option>
+                                          <option value="JULY">JULY</option>
+                                          <option value="AUGUST">AUGUST</option>
+                                          <option value="SEPTEMBER">SEPTEMBER</option>
+                                          <option value="OCTOBER">OCTOBER</option>
+                                          <option value="NOVEMBER">NOVEMBER</option>
+                                          <option value="DECEMBER">DECEMBER</option>
+                               </select>
+
+
+                      <div class="form-group">
+
+                            <label for="exampleInputUsername1">Quantity</label>
+
+                        <input style="background-color:lightslategray"  type="text" class="form-control" id="exampleInputUsername1" name="Quantity" placeholder="Enter Quantity">
+                      </div>
+                      <div class="form-group">
+
+
+                      <label>Starting Date</label>
+                        <input type="date" style="background-color:lightslategray"  class="form-control" id="exampleInputUsername1" name="st_date" placeholder="Enter Name">
+                      </div>
+                      <div class="form-group">
+
+
+                      <label>Ending Date</label>
+                        <input type="date" style="background-color:lightslategray"  class="form-control" id="exampleInputUsername1" name="ed_date" placeholder="Enter Diascription">
+                      </div>
+{#                      <div class="form-group">#}
+{##}
+{##}
+{##}
+{#                        <input type="text" class="form-control" id="exampleInputUsername1" name="district" placeholder="Enter District">#}
+{#                      </div>#}
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <a href="/anganwadi" class="btn btn-primary mr-2" class="badge badge-danger">Cancel</a>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10 grid-margin stretch-card">
+                <div >
+                  <div >
+                    <table class="table">
+                          <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                              <th>Month</th>
+                               <th>Start Date</th>
+                               <th>End Date</th>
+                              <td>Upload Date</td>
+                              <td>View Request</td>
+                              <td>Remove</td>
+                          </tr>
+                        {% for i in  userfoodservice %}
+                          <tr>
+                            <td>{{ i.food_id.food_name }}</td>
+                             <td>{{ i.food_qty }}</td>
+                              <td>{{ i.month }}</td>
+                              <td>{{ i.start_date }}</td>
+                              <td>{{ i.end_date}}</td>
+                              <td>{{ i.upload_date}}</td>
+                               <td><a href="ViewUserBooking_food?food_id={{ i.food_id.id }}" class="badge badge-danger">View request</a></td>
+                           <td><a href="user_foodServices_remove?id={{ i.id }}" class="badge badge-danger">remove</a></td>
+                          </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+ <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+{% endblock %}

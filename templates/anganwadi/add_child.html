@@ -1,0 +1,160 @@
+{% extends 'anganwadi/anganwadi_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+      alter("{{ message }}")
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>Child Registration</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>Child Registration</h3>
+            </div>
+          </div>
+         <form action="add_child" method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+{#                        <label for="exampleInputUsername1">DISTRICT OFFICERS REGISTRATION</label>#}
+                      <br>
+
+                          <label for="exampleInputUsername1">District</label>
+                       <li >
+                        <a href="#" style="background-color:lightslategray" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>District:-{{ selectdistrict }}</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            {% for i in district %}
+                            <li><i class="mdi mdi-speedometer"></i><a href="child_district?dist_id={{ i.id }}">{{ i.District_name }} </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </li>
+                      <br>
+                          <label for="exampleInputUsername1">Place</label>
+                             <li >
+                        <a href="#" style="background-color:lightslategray" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>Place:-{{ selectplace }}</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            {% for j in place %}
+                            <li><i class="mdi mdi-speedometer"></i><a href="selected_child_place?place_id={{ j.id }}">{{ j.place }} </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+                      <br>
+
+                      <label for="exampleInputUsername1">Location</label>
+                      <select style="background-color:lightslategray" class="form-control"  name="location" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+                              <option  required="required">---Select---</option>
+                              {% for i in locations %}
+                                   <option value="{{ i.id }}">{{ i.location }} </option>
+{#                              <a href="officers_district?dist_id={{ i.id }}" >{{ k.location }} </a>#}
+                              {% endfor %}
+                               </select>
+                          <br>
+
+
+                          <input style="background-color:lightslategray" type="text" class="form-control" id="exampleInputUsername1" name="name" placeholder="Child name">
+                             <br>
+                          <input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="Age" placeholder="Enter Age">
+                      <br>
+                        <td>Male&nbsp;<input type="radio" required name="gender" id="rdbtnGender" value="Male" />&nbsp;&nbsp;
+                           Female&nbsp;<input type="radio" name="gender" id="rdbtnGender" value="Female" />&nbsp;&nbsp;
+                            Others&nbsp;<input type="radio" name="gender" id="rdbtnGender" value="Others" />
+                        <label for="rdbtnGender"></label></td>
+                      <br>
+                      <br>
+                        <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="Father" placeholder="Enter Father Name">
+                      <br>
+                        <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="Mother" placeholder="Enter Mother Name">
+                        <br>
+
+                          <input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="phone" placeholder="Enter Contact">
+                      <br>
+                          <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="House" placeholder="Enter House name">
+
+                      <br>
+                             <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="street" placeholder="Enter Street">
+                       <br>
+                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="pincode" placeholder="Enter Pincode">
+{#                      <br>#}
+{#                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="password" placeholder="Enter Passwprd">#}
+{#                      <br>#}
+{#                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="ConfirmPassword" placeholder="Enter ConfirmPassword">#}
+                               <br>
+                          <label for="exampleInputUsername1">Child's Photo</label>
+                          <input style="background-color:lightslategray" type="file" class="form-control" id="exampleInputUsername1" name="image" placeholder="Enter Pincode">
+                      <br>
+
+                          <label for="exampleInputUsername1">Birth certificate of Child</label>
+                          <input style="background-color:lightslategray" type="file" class="form-control" id="exampleInputUsername1" name="proofdoc" placeholder="Enter Pincode">
+
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+
+
+                    </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+ <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+{% endblock %}

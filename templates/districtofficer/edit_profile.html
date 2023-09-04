@@ -1,0 +1,125 @@
+{% extends 'districtofficer/district_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+    alter({{ message }})
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganawadi </h2>
+                <h2>DISTRICT OFFICER</h2>
+
+              <div id="search-section">
+{#              	<form id="suggestion_form" name="gs" method="get" action="#">#}
+{#                <div class="searchText">#}
+{#                  #}
+{#                  <input type="text" name="q" class="searchText" placeholder="Enter your domain here..." autocomplete="on">#}
+{#                  <ul>#}
+{#                    <li><label><input type="checkbox" name="ext_com" value="1"><span>.com <em>($10/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_net" value="1"><span>.net <em>($12/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_org" value="1"><span>.org <em>($8/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_in" value="1"><span>.in <em>($6/yr)</em></span></label></li>#}
+{#                  </ul>#}
+{#                </div>#}
+{#                    <input type="submit" name="results" class="main-button" value="Search Now">#}
+{#                 </form>#}
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>EDIT PROFILE</h3>
+            </div>
+          </div>
+          <form action="" method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+{#                        <label for="exampleInputUsername1">DISTRICT OFFICERS REGISTRATION</label>#}
+
+
+                          <input type="text" style="background-color:lightslategray" class="form-control" value="{{ districtofficer.phone }}" id="exampleInputUsername1" name="phone" placeholder="Enter Contact">
+                      <br>
+                          <input type="text" style="background-color:lightslategray" class="form-control" value="{{ districtofficer.emil }}" id="exampleInputUsername1" name="email" placeholder="Enter Email">
+                      <br>
+
+                          <input type="text" style="background-color:lightslategray" class="form-control" value="{{ districtofficer.housename }}" id="exampleInputUsername1" name="housename" placeholder="Enter HouseName/No">
+                      <br>
+                          <input type="text" style="background-color:lightslategray" class="form-control" value="{{ districtofficer.street }}" id="exampleInputUsername1" name="street" placeholder="Enter Street">
+
+                      <br>
+                                                    <label for="exampleInputUsername1">Image</label>
+                          <img  style="width: 150px;height: 150px;" src="{{ districtofficer.Image.url }}" class="img-responsive" alt="slide">
+
+                        <br>
+                          <br>
+                          <input type="file" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="image" placeholder="Enter Pincode" required>
+                       <br>
+                       <input type="text" style="background-color:lightslategray" class="form-control" value="{{ districtofficer.pincode }}" id="exampleInputUsername1" name="pincode" placeholder="Enter Pincode">
+                      <br>
+
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+
+                    </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+   <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+
+
+{% endblock %}

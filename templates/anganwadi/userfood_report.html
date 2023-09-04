@@ -1,0 +1,154 @@
+{% extends 'anganwadi/anganwadi_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+      alter("{{ message }}")
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>User Food Report</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>User Food Report</h3>
+               <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+{#              <h3 class="page-title">ADD DISTRICT</h3>#}
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+                     <form action="view_userfood_report" method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+
+
+
+                      <div class="form-group">
+
+                            <label for="exampleInputUsername1">Start Date</label>
+
+                        <input style="background-color:lightslategray"  type="date" class="form-control" id="exampleInputUsername1" name="starting_date" placeholder="Enter Quantity" required>
+                      </div>
+                      <div class="form-group">
+
+
+                      <label>End Date</label>
+                        <input type="date" style="background-color:lightslategray"  class="form-control" id="exampleInputUsername1" name="ending_date" placeholder="Enter Name" required>
+                      </div>
+                      <div class="form-group">
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <a href="/anganwadi" class="btn btn-primary mr-2" class="badge badge-danger">Cancel</a>
+
+                     </form>
+                   </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+              <div class="col-md-7 grid-margin stretch-card">
+                <div >
+                  <div >
+                     <table class="table">
+                          <tr>
+                            <th>User name</th>
+                            <th>Email</th>
+                              <th>Food</th>
+                              <th>Booking Date</th>
+                              <th>Status</th>
+{#                              <td>Action</td>#}
+                          </tr>
+                        {% for i in  result %}
+                          <tr>
+                            <td>{{ i.user_id.first_name }}</td>
+                             <td>{{ i.user_id.email }}</td>
+                              <td>{{ i.userfoodservice_id.food_id.food_name }}</td>
+                              <td>{{ i.foodbooking_date }}</td>
+                              <th>{{ i.foodbooking_status }}</th>
+{#                           <td><a href="user_provide_food?id={{ i.id }}" class="badge badge-danger">Provide Food</a></td>#}
+                          </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+ <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+{% endblock %}

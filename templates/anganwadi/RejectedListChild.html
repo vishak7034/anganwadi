@@ -1,0 +1,114 @@
+{% extends 'anganwadi/anganwadi_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+      alter("{{ message }}")
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>Children Rejected List</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>Rejected List</h3>
+            </div>
+          </div>
+          <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+
+                                 <th class="success" style="color: white;">Name</th>
+                                 <th class="success" style="color: white;">Age</th>
+                                 <th class="success" style="color: white;">Phone</th>
+                                 <th class="success" style="color: white;">Gender</th>
+                                 <th class="success" style="color: white;">Father name</th>
+                                 <th class="success" style="color: white;">Mother name</th>
+                                 <th class="success" style="color: white;">Address</th>
+                                 <th class="success" style="color: white;">Birth Certificate</th>
+                                 <th class="success" style="color: white;">Image</th>
+
+                                 <th class="success" style="color: white;">action</th>
+                                 {% for i in CHILD %}
+                                <tr style="background-color:white;width: 700px;">
+
+                                    <td>{{ i.child_name}}</td>
+                                    <td>{{ i.child_age}}</td>
+                                    <td>{{ i.child_contact}}</td>
+                                    <td>{{ i.child_gender }}</td>
+                                    <td>{{ i.child_fathername }}</td>
+                                    <td>{{ i.child_mothername }}</td>
+
+                                    <td>{{i.child_hname}},{{ i.place_id.place }},{{i.child_pin}}</td>
+                                    <td><a href="{{ i.birthcertificate.url }}" download>Download </a></td>
+                                    <td><img  style="width: 100px;height: 100px;" src="{{ i.child_image.url }}" class="img-responsive" alt="slide"></td>
+
+
+
+{#                                    <td><button style="background-color:lightslategray"><a href="approve?id={{ us.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+                                    <td><button style="background-color:lightslategray"><a href="child_accept?id={{ i.child_id.id }}" class=" btn btn-danger" style="color:black">accept</a></button></td>
+
+                                </tr>
+                                {% endfor %}
+
+
+
+                            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+ <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+{% endblock %}

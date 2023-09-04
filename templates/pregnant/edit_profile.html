@@ -1,0 +1,120 @@
+{% extends 'pregnant/pregnant_base.html' %}
+{% load static  %}
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+   <div class="page-heading header-text">
+   {% if messages  %}
+<script>
+      alter("{{ messages }}")
+</script>
+{% endif %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>EDIT PREGNANT PROFILE</h1>
+{#            <p><a href="index.html">Home</a> / <span></span></p>#}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Heading Ends Here -->
+
+
+    <!-- Contact Us Starts Here -->
+    <div class="contact-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contact-form">
+                <h1 style="color:darkblue">EDIT PREGNANT PROFILE</h1>
+              <form  method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+
+{#                      <br>#}
+                                                       <input style="background-color:lightslategray" type="text" class="form-control" id="exampleInputUsername1" name="name" value="{{ USER.pwomen_name }}" placeholder="{{ USER.pwomen_name }}">
+                      <br>
+                          Contact Number<input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="phone" value="{{ USER.pwomen_contact }}" placeholder="{{ USER.pwomen_contact }}">
+                      <br>
+                          Email-ID<input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="email" value="{{ USER.pwomen_email }}" placeholder="{{ USER.pwomen_email }}">
+
+{#                      <br>#}
+{#                             <input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="Age" placeholder="Enter Age">#}
+                       <br>
+                       Address<input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="House" value="{{ USER.pwomen_house }}" placeholder="{{ USER.pwomen_house }}">
+                       <br>
+                          <br>
+                                                    <label for="exampleInputUsername1">Image</label>
+                          <img  style="width: 150px;height: 150px;" src="{{ USER.pwomen_photo.url }}" class="img-responsive" alt="slide">
+
+                        <br>
+                          <br>
+                          <input type="file" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="image" placeholder="Enter Pincode" required>
+                       <br>
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+
+
+                    </form>
+
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Contact Us Ends Here -->
+
+
+    <!-- Map Starts Here -->
+    <div id="map">
+
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+
+{#      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11196.961132529668!2d-43.38581128725845!3d-23.011063013218724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdb695cd967b7%3A0x171cdd035a6a9d84!2sAv.%20L%C3%BAcio%20Costa%20-%20Barra%20da%20Tijuca%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%20Brazil!5e0!3m2!1sen!2sth!4v1568649412152!5m2!1sen!2sth" width="100%" height="520px" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+    </div>
+    <!-- Map Ends Here -->
+
+
+    <!-- Testimonials Starts Here -->
+
+    <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends 'districtofficer/district_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+    alter({{ message }})
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>ADD USER FOOD</h2>
+
+              <div id="search-section">
+{#              	<form id="suggestion_form" name="gs" method="get" action="#">#}
+{#                <div class="searchText">#}
+{#                  #}
+{#                  <input type="text" name="q" class="searchText" placeholder="Enter your domain here..." autocomplete="on">#}
+{#                  <ul>#}
+{#                    <li><label><input type="checkbox" name="ext_com" value="1"><span>.com <em>($10/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_net" value="1"><span>.net <em>($12/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_org" value="1"><span>.org <em>($8/yr)</em></span></label></li>#}
+{#                    <li><label><input type="checkbox" name="ext_in" value="1"><span>.in <em>($6/yr)</em></span></label></li>#}
+{#                  </ul>#}
+{#                </div>#}
+{#                    <input type="submit" name="results" class="main-button" value="Search Now">#}
+{#                 </form>#}
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>ADD USER FOOD</h3>
+               <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+{#              <h3 class="page-title">ADD DISTRICT</h3>#}
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+                  <form action="" method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+
+
+
+                         <label for="exampleInputUsername1">Food Type</label>
+                      <select style="background-color:lightslategray" class="form-control"  name="foodtype" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+                              <option  required="required">---Select---</option>
+                              {% for i in foodtype %}
+                                   <option value="{{ i.id }}">{{ i.foodtype }} </option>
+{#                              <a href="officers_district?dist_id={{ i.id }}" >{{ k.location }} </a>#}
+                              {% endfor %}
+                               </select>
+
+                      </div>
+                      <div class="form-group">
+
+                            <label for="exampleInputUsername1">Image</label>
+
+                        <input style="background-color:lightslategray"  type="file" class="form-control" id="exampleInputUsername1" name="Image" placeholder="Enter Foodtype">
+                      </div>
+                      <div class="form-group">
+
+
+
+                        <input type="text" style="background-color:lightslategray"  class="form-control" id="exampleInputUsername1" name="name" placeholder="Enter Name">
+                      </div>
+                      <div class="form-group">
+
+
+
+                        <input type="text" style="background-color:lightslategray;height: 100px"  class="form-control" id="exampleInputUsername1" name="FOODdetails" placeholder="Enter Description">
+                      </div>
+{#                      <div class="form-group">#}
+{##}
+{##}
+{##}
+{#                        <input type="text" class="form-control" id="exampleInputUsername1" name="district" placeholder="Enter District">#}
+{#                      </div>#}
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <a href="/districtofficer" class="btn btn-primary mr-2" class="badge badge-danger">Cancel</a>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 grid-margin stretch-card">
+                <div >
+                  <div >
+                    <table class="table">
+                          <tr>
+                            <th>Food type</th>
+                            <th>Food Image</th>
+                              <th>Food name</th>
+                               <th>Food Discription</th>
+                               <th>District officers</th>
+                              <td>Remove</td>
+                          </tr>
+                        {% for i in  userfoodtype %}
+                          <tr>
+                            <td>{{ i.foodtype_id.foodtype }}</td>
+                             <td><img  style="width: 100px;height: 100px;" src="{{ i.food_pic.url }}" class="img-responsive" alt="slide"></td>
+                              <td>{{ i.food_name }}</td>
+                              <td>{{ i.food_description }}</td>
+                              <td>{{ i.dofficer_id.user.first_name }}</td>
+                           <td><a href="remove_userfood?id={{ i.id }}" class="badge badge-danger">remove</a></td>
+                          </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+   <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+
+
+{% endblock %}

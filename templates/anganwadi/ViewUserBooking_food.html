@@ -1,0 +1,111 @@
+{% extends 'anganwadi/anganwadi_base.html' %}
+{% load static  %}
+{% block content %}
+{% if message  %}
+<script>
+      alter("{{ message }}")
+</script>
+{% endif %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerela Anganawadi </h2>
+                <h2>User Food-Booking Requests</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>User Food-Booking Requests</h3>
+            </div>
+          </div>
+          <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+                                 <th class="success" style="color: white;">User Name</th>
+                                 <th class="success" style="color: white;">Email</th>
+                                 <th class="success" style="color: white;">Booking Date</th>
+
+                                 <th class="success" style="color: white;">Action</th>
+{#                                 <th class="success" style="color: white;">Location</th>#}
+
+
+                                  {% for i in pfoodbooking %}
+                                <tr style="background-color:white;width: 700px;">
+
+                                    <td>{{ i.user_id.first_name }}</td>
+                                    <td>{{ i.user_id.email}}</td>
+                                    <td>{{ i.foodbooking_date}}</td>
+
+{#                                    <td>{{ Anganwadi.location_id.location }}</td>#}
+
+
+
+
+                                    <td><button style="background-color:lightslategray"><a href="approve_users_foodrequest?id={{ i.id}} &quantity={{ i.userfoodservice_id.food_qty }}&foodid={{ i.userfoodservice_id.food_id.id }}" class=" btn btn-success" style="color:black">Approve</a></button></td>
+{#                                    <td><button style="background-color:lightslategray"><a href="rejects?id={{ us.Userr_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>#}
+
+                                </tr>
+                               {% endfor %}
+
+
+
+                            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+    <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/anganwadi-rular-indian-school-sketch-260nw-1183280557.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/images.jfif' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+
+
+
+{% endblock %}

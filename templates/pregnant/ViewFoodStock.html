@@ -1,0 +1,107 @@
+{% extends 'pregnant/pregnant_base.html' %}
+{% load static  %}
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+            {% if messages %}
+<script>
+alert("{{ messages }}")
+</script>
+{% endif %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Kerala Anganwadi </h2>
+                <h2>Food stock</h2>
+
+              <div id="search-section">
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h3>Food stock</h3>
+            </div>
+          </div>
+          <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+                                 <th class="success" style="color: white;">Food</th>
+                                 <th class="success" style="color: white;">Quantity</th>
+                                 <th class="success" style="color: white;">Start Date</th>
+                                 <th class="success" style="color: white;">End Date</th>
+                                 <th class="success" style="color: white;">Action</th>
+
+                                 {% for i in pwomenfoodservice %}
+
+                                <tr style="background-color:white;width: 700px;">
+
+                                    <td>{{ i.food_id.pfood_name}}</td>
+                                    <td>{{ i.food_qty}}</td>
+                                    <td>{{ i.start_date}}</td>
+                                    <td>{{ i.end_date}}</td>
+
+
+
+
+                                    <td><button style="background-color:lightslategray"><a href="accept_foodrequestrequest?id={{ i.id}}" class=" btn btn-success" style="color:black">Accept request</a></button></td>
+{#                                    <td><button style="background-color:lightslategray"><a href="rejects?id={{ us.Userr_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>#}
+
+                                </tr>
+                                {% endfor %}
+
+
+                            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+
+    <!-- Services Starts Here -->
+    <div class="services-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+             <img style="width: 100%;height: 100%" src="{% static 'assets/images/Government_of_Kerala_Logo.svg.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+             <div class="service-item">
+             <img style="width: 65%;height: 65%" src="{% static 'assets/images/image1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+
+               <div class="service-item">
+             <img style="width: 95%;height: 95%" src="{% static 'assets/images/image2.jpg' %}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Ends Here -->
+
+{% endblock %}

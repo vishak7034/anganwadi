@@ -1,0 +1,138 @@
+{% extends 'index_base.html' %}
+{% load static  %}
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+   <div class="page-heading header-text">
+   {% if messages  %}
+<script>
+      alter("{{ message }}")
+</script>
+{% endif %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>USER REGITRATION HERE</h1>
+{#            <p><a href="index.html">Home</a> / <span></span></p>#}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Heading Ends Here -->
+
+
+    <!-- Contact Us Starts Here -->
+    <div class="contact-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contact-form">
+                <h1 style="color:darkblue">REGISTRATION</h1>
+              <form  method="POST" class="forms-sample" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+{#                        <label for="exampleInputUsername1">DISTRICT OFFICERS REGISTRATION</label>#}
+
+
+                          <label for="exampleInputUsername1">District</label>
+
+                        <a href="#" style="background-color:white" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>District:-{{ selectdistrict }}</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            {% for i in district %}
+                            <li><i class="mdi mdi-speedometer"></i><a href="/User_place?dist_id={{ i.id }}">{{ i.District_name }} </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+
+                      <br>
+                             <li >Place
+
+                        <a href="#" style="background-color:lightslategray" class="form-control"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>Place:-{{ selectplace }}</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            {% for j in place %}
+                            <li><i ></i><a href="/User_location?place_id={{ j.id }}">{{ j.place }} </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+                      <br>
+
+                      <label for="exampleInputUsername1">Location</label>
+                      <select style="background-color:lightslategray" class="form-control"  name="location" id="PLACE" required="required" onchange="show_dis(this.value,0)" >
+                              <option  required="required">---Select---</option>
+                              {% for i in locations %}
+                                   <option value="{{ i.id }}">{{ i.location }} </option>
+{#                              <a href="officers_district?dist_id={{ i.id }}" >{{ k.location }} </a>#}
+                              {% endfor %}
+                               </select>
+                          <br>
+                             <br>
+                         <label for="exampleInputUsername1">Birth Certificate</label>
+                          <input style="background-color:lightslategray" type="file" class="form-control" id="exampleInputUsername1" name="proofdoc" placeholder="Enter Pincode">
+                      <br>
+{#                          <label for="exampleInputUsername1">Image</label>#}
+{#                          <input style="background-color:lightslategray" type="file" class="form-control" id="exampleInputUsername1" name="image" placeholder="Enter Pincode">#}
+{#                      <br>#}
+                                                       <input style="background-color:lightslategray" type="text" class="form-control" id="exampleInputUsername1" name="name" placeholder="Enter name">
+                      <br>
+                          <input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="phone" placeholder="Enter Contact">
+                      <br>
+                          <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="email" placeholder="Enter Email">
+
+                      <br>
+                             <input type="number" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="Age" placeholder="Enter Age">
+                       <br>
+                        <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="House" placeholder="Enter House Name">
+                       <br>
+                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="street" placeholder="Enter Street">
+                       <br>
+                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="pincode" placeholder="Enter Pincode">
+                       <br>
+                       <input type="text" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="username" placeholder="Enter Username">
+                      <br>
+                       <input type="password" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="password" placeholder="Enter Passwprd">
+                      <br>
+                       <input type="password" style="background-color:lightslategray" class="form-control" id="exampleInputUsername1" name="ConfirmPassword" placeholder="Enter ConfirmPassword">
+                      <br>
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+
+
+                    </form>
+
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Contact Us Ends Here -->
+
+
+    <!-- Map Starts Here -->
+    <div id="map">
+
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+
+{#      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11196.961132529668!2d-43.38581128725845!3d-23.011063013218724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdb695cd967b7%3A0x171cdd035a6a9d84!2sAv.%20L%C3%BAcio%20Costa%20-%20Barra%20da%20Tijuca%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%20Brazil!5e0!3m2!1sen!2sth!4v1568649412152!5m2!1sen!2sth" width="100%" height="520px" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+    </div>
+    <!-- Map Ends Here -->
+
+
+    <!-- Testimonials Starts Here -->
+
+    <!-- Services Ends Here -->
+
+
+
+
+{% endblock %}
